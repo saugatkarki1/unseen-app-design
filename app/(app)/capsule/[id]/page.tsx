@@ -336,7 +336,7 @@ export default function CapsulePage() {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 p-6 text-white"
+                            className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#0B1D51] to-[#1E3A8A] p-6 text-white"
                         >
                             <div className="flex items-center justify-between">
                                 <div>
@@ -347,7 +347,7 @@ export default function CapsulePage() {
                                 </div>
                                 <Button
                                     onClick={handleCompleteCapsule}
-                                    className="bg-white text-green-600 hover:bg-white/90"
+                                    className="bg-white text-[#0B1D51] hover:bg-white/90"
                                 >
                                     <Trophy className="h-4 w-4 mr-2" />
                                     Claim {capsule.points + earnedPoints} Points

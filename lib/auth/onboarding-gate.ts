@@ -17,7 +17,7 @@ import { supabaseAdmin } from "@/lib/supabase/admin"
 interface OnboardingProfile {
     role: string | null
     // Student fields
-    learning_goals: string[] | null
+    learning_goal: string | null
     motivation_type: string | null
     current_skill_level: string | null
     time_commitment: string | null
@@ -122,7 +122,7 @@ export async function checkOnboardingGate(
       motivation_type,
       current_skill_level,
       time_commitment,
-      learning_goals,
+      learning_goal,
       mentor_expertise,
       mentor_experience_level,
       mentor_availability
@@ -130,8 +130,8 @@ export async function checkOnboardingGate(
         .eq("id", user.id)
         .single()
 
-    // DEBUG: Log raw profile row fetched
-    if (profileError) {
+    // Only log actual errors with meaningful content
+    if (profileError && Object.keys(profileError).length > 0 && profileError.code !== "PGRST116") {
         console.error(`[onboarding-gate] Profile fetch error:`, profileError)
     }
 

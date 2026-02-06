@@ -12,9 +12,9 @@ import {
   Settings,
   Trophy,
   Target,
-  Hexagon,
   User,
 } from "lucide-react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { useSidebarState } from "./sidebar-context"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -59,7 +59,13 @@ export function Sidebar() {
         {/* Logo/Brand Section */}
         <div className="flex items-center h-16 px-4 border-b border-sidebar-border">
           <div className="flex items-center gap-3 overflow-hidden">
-            <Hexagon className="h-8 w-8 text-primary flex-shrink-0" strokeWidth={1.5} />
+            <Image
+              src="/img0.png"
+              alt="Frysta Logo"
+              width={32}
+              height={32}
+              className="flex-shrink-0 rounded"
+            />
             <motion.div
               initial={{ opacity: 0, width: 0 }}
               animate={{
@@ -118,7 +124,7 @@ export function Sidebar() {
                   <Icon
                     className={cn(
                       "h-5 w-5 flex-shrink-0 transition-colors",
-                      isActive ? "text-primary" : "text-sidebar-foreground/70 group-hover/link:text-sidebar-foreground"
+                      isActive ? "text-sidebar-primary" : "text-sidebar-foreground/70 group-hover/link:text-sidebar-foreground"
                     )}
                     aria-hidden="true"
                   />
@@ -162,7 +168,7 @@ export function Sidebar() {
             <Settings
               className={cn(
                 "h-5 w-5 flex-shrink-0 transition-colors",
-                pathname === "/settings" ? "text-primary" : "text-sidebar-foreground/70 group-hover/link:text-sidebar-foreground"
+                pathname === "/settings" ? "text-sidebar-primary" : "text-sidebar-foreground/70 group-hover/link:text-sidebar-foreground"
               )}
               aria-hidden="true"
             />
@@ -185,7 +191,13 @@ export function Sidebar() {
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 h-14 bg-sidebar border-b border-sidebar-border">
         {/* Logo */}
         <Link href="/dashboard" className="flex items-center gap-2">
-          <Hexagon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+          <Image
+            src="/img0.png"
+            alt="Frysta Logo"
+            width={24}
+            height={24}
+            className="rounded"
+          />
           <span className="font-tech text-sm font-bold text-sidebar-foreground tracking-wider">FRYSTA</span>
         </Link>
 

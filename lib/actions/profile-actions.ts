@@ -229,3 +229,73 @@ export async function getProfileSkillDomain(): Promise<SkillDomain> {
     }
 }
 
+// ============================================================================
+// GET CURRENT USER PROFILE DATA FOR SYNC
+// ============================================================================
+
+export interface ProfileSyncData {
+    avatarUrl: string | null
+    fullName: string | null
+}
+
+/**
+ * Fetch the current user's avatar URL and full name for syncing to client store.
+ * Returns null values if not authenticated or data not set.
+ */
+export async function getProfileSyncData(): Promise<ProfileSyncData> {
+    try {
+        const cookieStore = await cookies()
+        const accessToken = cookieStore.get("sb-access-token")?.value
+        const refreshToken = cookieStore.get("sb-refresh-token")?.value
+
+        if (!accessToken || !refreshToken) {
+            return { avatarUrl: null, fullName: null }
+        }
+
+        const supabase = createClient(
+            env.client.NEXT_PUBLIC_SUPABASE_URL,
+            env.client.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+            {
+                auth: {
+                    persistSession: false,
+                    autoRefreshToken: false,
+                },
+            }
+        )
+
+        await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+        })
+
+        const { data: { user } } = await supabase.auth.getUser()
+        if (!user) {
+            return { avatarUrl: null, fullName: null }
+        }
+
+        // Fetch avatar_url and full_name from profile
+        const { data: profile } = await supabaseAdmin
+            .from("profiles")
+            .select("avatar_url, full_name")
+            .eq("id", user.id)
+            .single()
+
+        const typedProfile = profile as { avatar_url: string | null; full_name: string | null } | null
+
+        return {
+            avatarUrl: typedProfile?.avatar_url || null,
+            fullName: typedProfile?.full_name || null,
+        }
+    } catch (err) {
+        console.error("[getProfileSyncData] Error:", err)
+        return { avatarUrl: null, fullName: null }
+    }
+}
+
+/**
+ * @deprecated Use getProfileSyncData instead
+ */
+export async function getProfileAvatarUrl(): Promise<string | null> {
+    const data = await getProfileSyncData()
+    return data.avatarUrl
+}

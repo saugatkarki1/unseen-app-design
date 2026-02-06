@@ -80,7 +80,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             initial="initial"
             animate={isExiting ? "exit" : "initial"}
             className="fixed inset-0 w-screen h-screen flex items-center justify-center z-[99999999999]"
-            style={{ backgroundColor: '#228B22' }}
+            style={{ backgroundColor: '#1e3a5f' }}
         >
             {dimension.width > 0 && (
                 <>
@@ -94,7 +94,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                         {words[index]}
                     </motion.p>
                     <svg className="absolute top-0 w-full h-[calc(100%+300px)]">
-                        <motion.path variants={curve} initial="initial" animate={isExiting ? "exit" : "initial"} fill="#228B22" />
+                        <motion.path variants={curve} initial="initial" animate={isExiting ? "exit" : "initial"} fill="#1e3a5f" />
                     </svg>
                 </>
             )}

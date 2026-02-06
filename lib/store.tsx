@@ -408,6 +408,18 @@ interface AppState {
    */
   deleteFocusArtifact: (id: string) => void
 
+  /**
+   * Set profile image URL from database.
+   * Called on app mount to sync avatar from DB to store.
+   */
+  setProfileImage: (url: string | null) => void
+
+  /**
+   * Set public alias (display name) from database.
+   * Called on app mount to sync name from DB to store.
+   */
+  setPublicAlias: (name: string | null) => void
+
 }
 
 const defaultShadowDrops: ShadowDrop[] = [
@@ -1781,6 +1793,14 @@ export const useAppStore = create<AppState>()(
             artifact.id === id ? artifact.userId !== state.userId : true
           ),
         })
+      },
+
+      setProfileImage: (url) => {
+        set({ profileImage: url || "" })
+      },
+
+      setPublicAlias: (name) => {
+        set({ publicAlias: name || "" })
       },
 
       resetState: () => {

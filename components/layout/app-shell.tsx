@@ -15,6 +15,7 @@ import { VerificationBanner } from "./verification-banner"
 import { FocusMode } from "@/components/ui/focus-mode"
 import { ReflectionModal } from "@/components/ui/reflection-modal"
 import { supabase } from "@/lib/supabaseClient"
+import { getProfileSyncData } from "@/lib/actions/profile-actions"
 
 interface AppShellProps {
   children: React.ReactNode
@@ -29,8 +30,32 @@ function AppShellContent({ children }: AppShellProps) {
   const resetUserScopedState = useAppStore((state) => state.resetUserScopedState)
   const setUserId = useAppStore((state) => state.setUserId)
   const currentUserId = useAppStore((state) => state.userId)
+  const setProfileImage = useAppStore((state) => state.setProfileImage)
+  const setPublicAlias = useAppStore((state) => state.setPublicAlias)
   const [decayNotice, setDecayNotice] = useState<{ show: boolean; amount: number }>({ show: false, amount: 0 })
   const { isOpen } = useSidebarState()
+
+  // SYNC PROFILE DATA FROM DATABASE
+  // This ensures the header avatar and name are populated from the database on mount
+  useEffect(() => {
+    async function syncProfileData() {
+      try {
+        const { avatarUrl, fullName } = await getProfileSyncData()
+        if (avatarUrl) {
+          setProfileImage(avatarUrl)
+        }
+        if (fullName) {
+          setPublicAlias(fullName)
+        }
+      } catch (err) {
+        console.error("[AppShell] Error syncing profile data:", err)
+      }
+    }
+    // Sync when userId is set
+    if (currentUserId) {
+      syncProfileData()
+    }
+  }, [currentUserId, setProfileImage, setPublicAlias])
 
   // AUTH STATE CHANGE LISTENER - Handles user switch and logout
   useEffect(() => {

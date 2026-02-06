@@ -40,6 +40,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { supabase } from "@/lib/supabaseClient"
 import { updateProfile, type UpdateProfileInput } from "./actions"
 import { cn } from "@/lib/utils"
+import { useAppStore } from "@/lib/store"
 
 // ============================================================================
 // TYPES
@@ -183,6 +184,9 @@ export default function ProfilePage() {
   const [isSaving, setIsSaving] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
   const [saveSuccess, setSaveSuccess] = useState(false)
+
+  // Global store for syncing avatar to header
+  const setProfileImage = useAppStore((state) => state.setProfileImage)
 
   // Editable field states
   const [editFullName, setEditFullName] = useState("")
@@ -349,6 +353,10 @@ export default function ProfilePage() {
         cover_image_url: editCoverImageUrl,
         cover_color: editCoverColor,
       })
+
+      // Sync avatar to global store for header display
+      setProfileImage(editAvatarUrl || null)
+
       setSaveSuccess(true)
       setIsEditing(false)
 
@@ -359,11 +367,73 @@ export default function ProfilePage() {
     }
   }
 
-  // Loading state
+  // Loading state - Skeleton loader matching profile layout
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      <div className="flex w-full min-h-screen flex-col px-4 py-6 md:px-8 lg:px-12 md:py-8">
+        {/* Header Skeleton */}
+        <div className="relative w-full rounded-xl overflow-hidden bg-muted animate-pulse h-40">
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 px-6 py-8">
+            {/* Avatar skeleton */}
+            <div className="h-24 w-24 rounded-full bg-muted-foreground/20" />
+            <div className="flex-1 space-y-2">
+              <div className="h-6 w-48 bg-muted-foreground/20 rounded" />
+              <div className="h-4 w-32 bg-muted-foreground/20 rounded" />
+            </div>
+          </div>
+        </div>
+
+        {/* Content Skeleton */}
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          {/* Left column skeletons */}
+          <div className="space-y-6">
+            {/* About card */}
+            <div className="rounded-xl bg-card border border-border/50 p-6">
+              <div className="h-4 w-20 bg-muted rounded animate-pulse mb-3" />
+              <div className="space-y-2">
+                <div className="h-4 w-full bg-muted rounded animate-pulse" />
+                <div className="h-4 w-3/4 bg-muted rounded animate-pulse" />
+              </div>
+            </div>
+            {/* Institution card */}
+            <div className="rounded-xl bg-card border border-border/50 p-6">
+              <div className="h-4 w-24 bg-muted rounded animate-pulse mb-3" />
+              <div className="h-4 w-40 bg-muted rounded animate-pulse" />
+            </div>
+            {/* Role card */}
+            <div className="rounded-xl bg-card border border-border/50 p-6">
+              <div className="h-4 w-16 bg-muted rounded animate-pulse mb-3" />
+              <div className="h-8 w-24 bg-muted rounded animate-pulse" />
+            </div>
+          </div>
+
+          {/* Right column skeletons */}
+          <div className="space-y-6">
+            {/* Skill domain card */}
+            <div className="rounded-xl bg-card border border-border/50 p-6">
+              <div className="h-4 w-28 bg-muted rounded animate-pulse mb-3" />
+              <div className="h-5 w-36 bg-muted rounded animate-pulse" />
+            </div>
+            {/* Skill level card */}
+            <div className="rounded-xl bg-card border border-border/50 p-6">
+              <div className="h-4 w-24 bg-muted rounded animate-pulse mb-3" />
+              <div className="flex gap-2">
+                <div className="h-8 w-20 bg-muted rounded animate-pulse" />
+                <div className="h-8 w-28 bg-muted rounded animate-pulse" />
+                <div className="h-8 w-20 bg-muted rounded animate-pulse" />
+              </div>
+            </div>
+            {/* Time commitment card */}
+            <div className="rounded-xl bg-card border border-border/50 p-6">
+              <div className="h-4 w-32 bg-muted rounded animate-pulse mb-3" />
+              <div className="flex gap-2">
+                <div className="h-8 w-16 bg-muted rounded animate-pulse" />
+                <div className="h-8 w-20 bg-muted rounded animate-pulse" />
+                <div className="h-8 w-24 bg-muted rounded animate-pulse" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -382,7 +452,7 @@ export default function ProfilePage() {
   const initials = getInitials(profile.full_name, profile.email ?? null)
 
   return (
-    <div className="flex w-full min-h-screen max-w-4xl mx-auto flex-col px-4 py-6 md:px-6 md:py-8">
+    <div className="flex w-full min-h-screen flex-col px-4 py-6 md:px-8 lg:px-12 md:py-8">
       {/* HEADER */}
       <header
         className="relative w-full flex-shrink-0 rounded-xl overflow-hidden shadow-lg"

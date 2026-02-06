@@ -203,7 +203,7 @@ export default function AuthSwitch() {
           top: -10%;
           right: 48%;
           transform: translateY(-50%);
-          background: linear-gradient(-45deg, #22c55e 0%, #15803d 100%);
+          background: linear-gradient(-45deg, #0B1D51 0%, #1E3A8A 100%);
           transition: 1.8s ease-in-out;
           border-radius: 50%;
           z-index: 6;
@@ -292,7 +292,7 @@ export default function AuthSwitch() {
 
         .input-field:focus-within {
           background-color: #e5e7eb;
-          box-shadow: 0 0 0 2px #22c55e;
+          box-shadow: 0 0 0 2px #0B1D51;
         }
 
         .input-field .icon-wrapper {
@@ -320,7 +320,7 @@ export default function AuthSwitch() {
 
         .auth-btn {
           width: 150px;
-          background-color: #22c55e;
+          background-color: #0B1D51;
           border: none;
           outline: none;
           height: 49px;
@@ -339,9 +339,9 @@ export default function AuthSwitch() {
         }
 
         .auth-btn:hover:not(:disabled) {
-          background-color: #16a34a;
+          background-color: #1E3A8A;
           transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+          box-shadow: 0 5px 15px rgba(11, 29, 81, 0.4);
         }
 
         .auth-btn:disabled {
@@ -495,7 +495,7 @@ export default function AuthSwitch() {
         }
 
         .success-message {
-          color: #22c55e;
+          color: #4CAF50;
           font-size: 0.85rem;
           margin-bottom: 10px;
           text-align: center;

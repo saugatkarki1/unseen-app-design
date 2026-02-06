@@ -535,11 +535,6 @@ export default function VaultPage() {
     <div className="flex w-full min-h-screen max-w-full flex-col px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:py-10">
       {renderHeader("Your personal knowledge base and proof of work.")}
       <div className="flex flex-1 flex-col space-y-8 overflow-y-auto">
-        {!emailVerified && (
-          <div className="p-3 rounded-lg border border-warning/20 bg-warning/10 text-sm text-warning-foreground">
-            Entries are stored as unverified progress. Aura growth is locked until email verification.
-          </div>
-        )}
 
         {/* Tabs */}
         <div className="flex gap-4 border-b border-border">

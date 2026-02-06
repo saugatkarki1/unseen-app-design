@@ -10,7 +10,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "FRYSTA",
   description: "A private learning system for disciplined self-formation",
-  generator: 'v0.app'
+  generator: 'v0.app',
+  icons: {
+    icon: '/img0.png',
+    apple: '/img0.png',
+  },
 }
 
 export const viewport: Viewport = {

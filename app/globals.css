@@ -3,8 +3,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* UNSEEN Design System - Dark Cyberpunk Theme */
-/* Inspired by M.O.N.K.Y. reference design */
+/* FRYSTA Design System - Navy Blue & Soft White Theme */
+/* Primary: Navy Blue (#0B1D51), Background: Soft White (#FFFFFF) */
 
 @font-face {
   font-family: 'JetBrains Mono';
@@ -15,52 +15,52 @@
 
 :root {
   /* ===== Base Colors ===== */
-  /* Primary Background - Near Black */
-  --background: #070B0D;
-  --foreground: #E5E7EB;
+  /* Primary Background - Soft White */
+  --background: #FFFFFF;
+  --foreground: #0B1D51;
 
-  /* Cards & Surfaces */
-  --card: #0D1117;
-  --card-foreground: #E5E7EB;
-  --popover: #0D1117;
-  --popover-foreground: #E5E7EB;
+  /* Cards & Surfaces - Light Gray */
+  --card: #F8FAFC;
+  --card-foreground: #0B1D51;
+  --popover: #FFFFFF;
+  --popover-foreground: #0B1D51;
 
   /* ===== Accent Colors ===== */
-  /* Primary - Neon Green */
-  --primary: #22C55E;
-  --primary-foreground: #070B0D;
+  /* Primary - Navy Blue */
+  --primary: #0B1D51;
+  --primary-foreground: #FFFFFF;
 
-  /* Secondary - Dark Surface */
-  --secondary: #1F2937;
-  --secondary-foreground: #E5E7EB;
+  /* Secondary - Light Surface */
+  --secondary: #E2E8F0;
+  --secondary-foreground: #0B1D51;
 
-  /* Accent - Orange */
-  --accent: #F97316;
-  --accent-foreground: #070B0D;
+  /* Accent - Orange (hover) */
+  --accent: #F57C00;
+  --accent-foreground: #FFFFFF;
 
   /* ===== Text Colors ===== */
-  --muted: #1F2937;
-  --muted-foreground: #9CA3AF;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
 
   /* ===== States ===== */
   --destructive: #EF4444;
-  --destructive-foreground: #070B0D;
-  --success: #22C55E;
-  --success-foreground: #070B0D;
-  --warning: #F97316;
-  --warning-foreground: #070B0D;
+  --destructive-foreground: #FFFFFF;
+  --success: #4CAF50;
+  --success-foreground: #FFFFFF;
+  --warning: #F57C00;
+  --warning-foreground: #FFFFFF;
   --info: #3B82F6;
-  --info-foreground: #070B0D;
+  --info-foreground: #FFFFFF;
 
   /* ===== Borders & Inputs ===== */
-  --border: #1F2937;
-  --input: #1F2937;
-  --ring: #22C55E;
+  --border: #CBD5E1;
+  --input: #E2E8F0;
+  --ring: #0B1D51;
 
   /* ===== Chart Colors ===== */
-  --chart-1: #22C55E;
-  /* Green */
-  --chart-2: #F97316;
+  --chart-1: #0B1D51;
+  /* Navy */
+  --chart-2: #F57C00;
   /* Orange */
   --chart-3: #3B82F6;
   /* Blue */
@@ -72,14 +72,14 @@
   --radius: 0.5rem;
 
   /* ===== Sidebar ===== */
-  --sidebar: #0D1117;
-  --sidebar-foreground: #E5E7EB;
-  --sidebar-primary: #22C55E;
-  --sidebar-primary-foreground: #070B0D;
-  --sidebar-accent: #1F2937;
-  --sidebar-accent-foreground: #E5E7EB;
-  --sidebar-border: #1F2937;
-  --sidebar-ring: #22C55E;
+  --sidebar: #0B1D51;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #FFFFFF;
+  --sidebar-primary-foreground: #0B1D51;
+  --sidebar-accent: #1E3A8A;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #1E3A8A;
+  --sidebar-ring: #FFFFFF;
 }
 
 @theme inline {
@@ -163,12 +163,12 @@
   letter-spacing: 0.05em;
 }
 
-.text-glow-green {
-  text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+.text-glow-navy {
+  text-shadow: 0 0 10px rgba(11, 29, 81, 0.5);
 }
 
 .text-glow-orange {
-  text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+  text-shadow: 0 0 10px rgba(245, 124, 0, 0.5);
 }
 
 /* ===== Card Styles ===== */
@@ -178,7 +178,7 @@
   border-radius: var(--radius);
 }
 
-.cyber-card-accent-green {
+.frysta-card-accent-navy {
   border-left: 3px solid var(--primary);
 }
 
@@ -223,13 +223,13 @@
 }
 
 .scroll-thin::-webkit-scrollbar-thumb {
-  background-color: rgba(34, 197, 94, 0.35);
+  background-color: rgba(11, 29, 81, 0.35);
   border-radius: 999px;
 }
 
 .scroll-thin {
   scrollbar-width: thin;
-  scrollbar-color: rgba(34, 197, 94, 0.35) transparent;
+  scrollbar-color: rgba(11, 29, 81, 0.35) transparent;
 }
 
 /* ===== Status Indicators ===== */
@@ -248,7 +248,7 @@
 /* ===== Grid Overlay Effect (optional) ===== */
 .grid-overlay {
   background-image:
-    linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(11, 29, 81, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 29, 81, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
 }
