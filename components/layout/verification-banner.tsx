@@ -61,14 +61,14 @@ export function VerificationBanner() {
   // Initialize cooldown from persisted storage (optional persistence across navigation)
   useEffect(() => {
     if (typeof window === "undefined") return
-    const stored = window.localStorage.getItem("unseen_verification_resend_until")
+    const stored = window.localStorage.getItem("frysta_verification_resend_until")
     if (stored) {
       const ts = Number(stored)
       if (!Number.isNaN(ts) && ts > Date.now()) {
         setResendUntil(ts)
         setCooldownRemaining(Math.ceil((ts - Date.now()) / 1000))
       } else {
-        window.localStorage.removeItem("unseen_verification_resend_until")
+        window.localStorage.removeItem("frysta_verification_resend_until")
       }
     }
   }, [])
@@ -82,7 +82,7 @@ export function VerificationBanner() {
         setResendUntil(null)
         setCooldownRemaining(0)
         if (typeof window !== "undefined") {
-          window.localStorage.removeItem("unseen_verification_resend_until")
+          window.localStorage.removeItem("frysta_verification_resend_until")
         }
         window.clearInterval(interval)
       } else {
@@ -136,7 +136,7 @@ export function VerificationBanner() {
       setResendUntil(nextUntil)
       setCooldownRemaining(COOLDOWN_SECONDS)
       if (typeof window !== "undefined") {
-        window.localStorage.setItem("unseen_verification_resend_until", String(nextUntil))
+        window.localStorage.setItem("frysta_verification_resend_until", String(nextUntil))
       }
     } catch (error) {
       console.error("Email send failed", error)

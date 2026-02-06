@@ -67,7 +67,7 @@ export function OpeningLoader() {
 
   useEffect(() => {
     // Check if loader was already shown in this session
-    const loaderShown = sessionStorage.getItem("unseen-loader-shown")
+    const loaderShown = sessionStorage.getItem("frysta-loader-shown")
 
     if (loaderShown === "true") {
       // Already shown in this session, skip rendering
@@ -76,7 +76,7 @@ export function OpeningLoader() {
     }
 
     // Mark as shown immediately to prevent re-renders
-    sessionStorage.setItem("unseen-loader-shown", "true")
+    sessionStorage.setItem("frysta-loader-shown", "true")
 
     // Initialize quote animation
     if (quoteRef.current) {
@@ -148,13 +148,13 @@ export function OpeningLoader() {
           <div className="h-12 w-12 rounded-full border-2 border-white/20 border-t-white animate-spin" />
         </div>
 
-        {/* UNSEEN wordmark - existing element */}
+        {/* FRYSTA wordmark - existing element */}
         <p className="text-xs uppercase tracking-[0.2em] text-white/40 sm:text-sm">
-          UNSEEN
+          FRYSTA
         </p>
 
         {/* Animated quote - letter-by-letter animation */}
-        <h1 ref={quoteRef} className="ml3 unseen-quote">
+        <h1 ref={quoteRef} className="ml3 frysta-quote">
           {quote}
         </h1>
       </div>

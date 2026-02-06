@@ -1,6 +1,6 @@
 # Database Schema Reference
 
-This document provides an overview of the database schema for the Unseen mentor platform.
+This document provides an overview of the database schema for the Frysta mentor platform.
 
 ## Core Tables
 

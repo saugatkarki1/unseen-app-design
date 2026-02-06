@@ -1823,7 +1823,7 @@ export const useAppStore = create<AppState>()(
       },
     }),
     {
-      name: "unseen-storage",
+      name: "frysta-storage",
       partialize: (state) => {
         const {
           activeFocusSession,

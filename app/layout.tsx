@@ -8,7 +8,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "UNSEEN",
+  title: "FRYSTA",
   description: "A private learning system for disciplined self-formation",
   generator: 'v0.app'
 }

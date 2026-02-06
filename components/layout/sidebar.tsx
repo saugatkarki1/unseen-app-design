@@ -70,7 +70,7 @@ export function Sidebar() {
               className="overflow-hidden whitespace-nowrap"
             >
               <p className="font-tech text-sm font-bold text-sidebar-foreground tracking-wider">
-                UNSEEN
+                FRYSTA
               </p>
               <p className="font-tech text-[10px] text-muted-foreground uppercase tracking-widest">
                 OS For Growth
@@ -186,7 +186,7 @@ export function Sidebar() {
         {/* Logo */}
         <Link href="/dashboard" className="flex items-center gap-2">
           <Hexagon className="h-6 w-6 text-primary" strokeWidth={1.5} />
-          <span className="font-tech text-sm font-bold text-sidebar-foreground tracking-wider">UNSEEN</span>
+          <span className="font-tech text-sm font-bold text-sidebar-foreground tracking-wider">FRYSTA</span>
         </Link>
 
         {/* Profile Icon */}

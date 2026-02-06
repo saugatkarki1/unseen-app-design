@@ -75,7 +75,7 @@ function ResetPasswordForm() {
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-background">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-sm font-semibold tracking-widest text-primary uppercase">UNSEEN</h1>
+          <h1 className="text-sm font-semibold tracking-widest text-primary uppercase">FRYSTA</h1>
         </div>
 
         <div className="space-y-6">
@@ -133,7 +133,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
-            <h1 className="text-sm font-semibold tracking-widest text-primary uppercase">UNSEEN</h1>
+            <h1 className="text-sm font-semibold tracking-widest text-primary uppercase">FRYSTA</h1>
           </div>
           <div className="text-center text-sm text-muted-foreground">Loading...</div>
         </div>

@@ -1,4 +1,4 @@
-# Unseen - AI-Powered Mentor Platform
+# Frysta - AI-Powered Mentor Platform
 
 A modern learning management system built with Next.js and Supabase, featuring personalized mentor matching, curriculum recommendations, and separate onboarding flows for students and mentors.
 
@@ -22,8 +22,8 @@ A modern learning management system built with Next.js and Supabase, featuring p
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/unseen-platform.git
-cd unseen-platform
+git clone https://github.com/saugatkarki1/unseen-app-design.git
+cd unseen-app-design
 
 # Install dependencies
 pnpm install
@@ -48,6 +48,8 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
 Get these values from your Supabase project: **Dashboard → Settings → API**
 
+See `docs/README_ENV.md` for detailed environment setup instructions.
+
 ## 📁 Project Structure
 
 ```
@@ -64,7 +66,7 @@ Get these values from your Supabase project: **Dashboard → Settings → API**
 │   ├── auth/               # Onboarding gate logic
 │   ├── supabase/           # Database clients
 │   └── *.ts                # Classifiers, utilities
-└── docs/                   # Database documentation
+└── docs/                   # Documentation
 ```
 
 ## 🔐 Authentication Flow
@@ -118,7 +120,7 @@ pnpm start
 ## 📖 Additional Documentation
 
 - `docs/SCHEMA_REFERENCE.md` - Database schema reference
-- `docs/google-oauth-setup.md` - OAuth configuration
+- `docs/README_ENV.md` - Environment setup guide
 
 ## 🛠️ Tech Stack
 
